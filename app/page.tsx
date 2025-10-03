@@ -1,11 +1,13 @@
-import { Button } from "@/components/ui/button";
+import AppBar from "@/components/app-bar";
+import Editor from "@/components/editor";
+import Output from "@/components/output";
 
 export default function Home() {
   return (
     <div>
-      Hello LingoPy Editor
-
-      <Button>Run</Button>
+      <AppBar />
+      <Editor />
+      <Output />
     </div>
   );
 }
