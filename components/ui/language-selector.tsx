@@ -1,3 +1,4 @@
+import { getLangauges } from "@/actions/language";
 import {
   Select,
   SelectContent,
@@ -5,20 +6,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { LanguageList } from "@/types";
 
-export default function LanguageSelector() {
-  const languages = [
-    "en",
-    "es",
-    "fr",
-    "de",
-    "zh",
-    "ja",
-    "ru",
-    "ar",
-    "pt",
-    "it",
-  ];
+export default async function LanguageSelector() {
+  const res: LanguageList | null = await getLangauges();
+  const languages = res ? res.languages : [];
+
   return (
     <div>
       <Select>
@@ -26,11 +19,17 @@ export default function LanguageSelector() {
           <SelectValue placeholder="Select Language" />
         </SelectTrigger>
         <SelectContent defaultValue={"en"}>
-          {languages.map((lang) => (
-            <SelectItem key={lang} value={lang}>
-              {lang.toUpperCase()}
+          {languages.length > 0 ? (
+            languages.map((lang) => (
+              <SelectItem key={lang} value={lang}>
+                {lang}
+              </SelectItem>
+            ))
+          ) : (
+            <SelectItem value="none" disabled>
+              No languages available
             </SelectItem>
-          ))}
+          )}
         </SelectContent>
       </Select>
     </div>
