@@ -65,7 +65,7 @@ export default function Commands() {
                         <code className="font-mono text-sm bg-muted px-1 rounded">{translation}</code>
                         <button
                           className="ml-2 px-2 py-1 bg-blue-500 text-white text-sm rounded"
-                          onClick={() => navigator.clipboard.writeText(translation)}
+                          onClick={() => navigator.clipboard.writeText(word)}
                         >Copy</button>
                       </li>
                     )
