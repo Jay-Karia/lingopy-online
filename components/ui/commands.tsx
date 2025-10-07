@@ -61,8 +61,8 @@ export default function Commands() {
                   {Object.entries(responseData.translations as Record<string, string>).map(
                     ([word, translation], idx) => (
                       <li key={idx} className="flex items-center justify-between">
-                        <span className="font-semibold">{word}</span>
-                        <code className="font-mono text-sm bg-muted px-1 rounded">{translation}</code>
+                        <span className="font-semibold">{translation}</span>
+                        <code className="font-mono text-sm bg-muted px-1 rounded">{word}</code>
                         <button
                           className="ml-2 px-2 py-1 bg-blue-500 text-white text-sm rounded"
                           onClick={() => navigator.clipboard.writeText(word)}
