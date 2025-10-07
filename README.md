@@ -8,12 +8,6 @@ _"Write Python in your native tongue "_
 
 [LingoPy](https://github.com/shaunbenedict/LingoPy)
 
-## Features
-
-- **Multi-language Support** - Select from various programming languages
-- **Live Code Execution** - Run your code and see results instantly
-- **Clean Interface** - Simple, distraction-free coding environment
-
 ## Getting Started
 
 1. Install dependencies:
@@ -35,7 +29,7 @@ _"Write Python in your native tongue "_
 
 ## Usage
 
-1. Select your programming language from the dropdown
+1. Select your language from the dropdown
 2. Write your code in the editor
 3. Click "Run" to execute
 4. View the output below
