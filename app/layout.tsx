@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LingoPy Editor",
   description: "The online editor for LingoPy",
+  icons: {
+    icon: "/logo.jpg",
+  },
 };
 
 export default function RootLayout({
