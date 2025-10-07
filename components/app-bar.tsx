@@ -1,5 +1,5 @@
-import Help from "./ui/help";
 import LanguageSelector from "./ui/language-selector";
+import Commands from "./ui/commands";
 import Run from "./ui/run";
 
 export default function AppBar() {
@@ -10,8 +10,8 @@ export default function AppBar() {
       </div>
 
       <div className="flex items-center gap-4">
+        <Commands />
         <Run />
-        <Help />
       </div>
     </div>
   );
