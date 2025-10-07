@@ -20,9 +20,9 @@ export default function LanguageSelectClient({ languages }: Props) {
 
   return (
     <div>
-      <Select onValueChange={(val) => setLanguage(val)}>
+      <Select value={current} onValueChange={(val) => setLanguage(val)}>
         <SelectTrigger className="w-[180px]">
-          <SelectValue placeholder="Select Language">{current}</SelectValue>
+          <SelectValue placeholder="Select Language" />
         </SelectTrigger>
         <SelectContent defaultValue={current || "en"}>
           {languages.length > 0 ? (
