@@ -2,7 +2,7 @@
 
 import { LanguageList } from "@/types";
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://lingopy-server.vercel.app/";
 
 export async function getLangauges(): Promise<LanguageList | null> {
   try {
