@@ -9,11 +9,6 @@ export async function runCode(code: string, language: string): Promise<string> {
     // Clean the code - remove trailing newlines and extra whitespace
     const cleanCode = code.trim();
 
-    console.log("Sending request with:", {
-      code: cleanCode,
-      language,
-    });
-
     const response = await fetch(`${API_URL}/runcode`, {
       method: "POST",
       headers: {
@@ -26,20 +21,37 @@ export async function runCode(code: string, language: string): Promise<string> {
       }),
     });
 
-    console.log("Response status:", response.status);
-
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("API Error:", errorText);
-      return `Error: ${response.status} - ${errorText}`;
+      // Try to parse JSON error response
+      try {
+        const errRes = await response.json();
+        if (errRes.error === "invalidLanguage") {
+          return "Mind your Language! Selcted language is wrong!";
+        }
+        return `Error: ${errRes.error || JSON.stringify(errRes)}`;
+      } catch {
+        const text = await response.text();
+        return `Error: ${text}`;
+      }
     }
-
+    
     const result = await response.json();
-    console.log("API Result:", result);
-
+    
+    console.log("Full API response:", JSON.stringify(result, null, 2));
+    console.log("result.error:", result.error);
+    console.log("result.output:", result.output);
+    
+    // Check if the response contains an error
+    if (result.error) {
+      if (result.error === "invalidLanguage") {
+        return "Mind your Language! Selcted language is wrong!";
+      }
+      return `Error: ${result.error}`;
+    }
+    
     return result.output || "No output returned";
+
   } catch (error) {
-    console.error("Error running code:", error);
     return `Error executing code: ${
       error instanceof Error ? error.message : "Unknown error"
     }`;

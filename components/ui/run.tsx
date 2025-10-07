@@ -23,6 +23,7 @@ export default function Run() {
     
     try {
       const result = await runCode(code, language);
+      console.log('runCode returned:', result);
       setOutput(result);
     } catch (error) {
       setOutput(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
