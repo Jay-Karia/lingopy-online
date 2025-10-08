@@ -1,6 +1,7 @@
 import LanguageSelector from "./ui/language-selector";
 import Commands from "./ui/commands";
 import Run from "./ui/run";
+import { ModeToggle } from "./ui/theme-toggle";
 
 export default function AppBar() {
   return (
@@ -10,6 +11,7 @@ export default function AppBar() {
       </div>
 
       <div className="flex items-center gap-4">
+        <ModeToggle />
         <Commands />
         <Run />
       </div>
